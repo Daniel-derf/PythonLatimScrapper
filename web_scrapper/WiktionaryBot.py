@@ -59,32 +59,43 @@ class Wiktionary:
                 return 'PALAVRA NÃO ENCONTRADA'
 
     def get_all_words_declinations(self, words: list):
-        words_declinations: list = [get_formated_word_data(word) for word in words]
+        words_declinations: list = [self.get_word_declination(word) for word in words]
         return words_declinations
 
 
 def get_formated_words_data(words_list):
     wik_bot = Wiktionary(browser, By)
 
-    result = wik_bot.get(words_list)
-    lines = result.split('\n')
-    lines = [line for line in lines if line]
-    formated_result = [line.split() for line in lines]
+    w_decs = wik_bot.get_all_words_declinations(words_list)
 
-    genitive_case: str
+    formated_w_decs: list = []
 
-    for line in formated_result:
-        for idx, word in enumerate(line):
-            if word == 'Genitive':
-                genitive_case = line[idx + 1]
+    for word_dec in w_decs:
+        lines = word_dec.split('\n')
+        lines = [line for line in lines if line]
+        formated_result = [line.split() for line in lines]
 
-    for idx1, line in enumerate(formated_result):
-        for idx, word in enumerate(line):
-            if word == 'Case':
-                formated_result[idx1][idx] = genitive_case
+        genitive_case: str
 
-    return formated_result
+        for line in formated_result:
+            for idx, word in enumerate(line):
+                if word == 'Genitive':
+                    genitive_case = line[idx + 1]
 
+        for idx1, line in enumerate(formated_result):
+            for idx, word in enumerate(line):
+                if word == 'Case':
+                    formated_result[idx1][idx] = genitive_case
+
+        formated_w_decs.append(formated_result) 
+    
+    return formated_w_decs
+
+
+results = get_formated_words_data(['hominum', 'rosa', 'exercitus'])
+
+for result in results:
+    print(result)
 
 
 
