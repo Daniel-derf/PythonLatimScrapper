@@ -63,7 +63,7 @@ class Wiktionary:
         return words_declinations
 
 
-def get_formated_words_data(words_list):
+def get_words_formated_data(words_list):
     wik_bot = Wiktionary(browser, By)
 
     w_decs = wik_bot.get_all_words_declinations(words_list)
@@ -92,12 +92,5 @@ def get_formated_words_data(words_list):
     return formated_w_decs
 
 
-results = get_formated_words_data(['hominum', 'rosa', 'exercitus'])
-
-for result in results:
-    print(result)
 
 
-
-# para o processo não demorar demais, modificar o scrapper para aceitar uma lista de palavras e
-# já buscá-las de uma vez
