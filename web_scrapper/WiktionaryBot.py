@@ -94,3 +94,4 @@ def get_words_formated_data(words_list):
 
 
 
+# [a-zA-Z]{4,20} : 
