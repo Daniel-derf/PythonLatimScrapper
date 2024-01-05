@@ -1,17 +1,17 @@
-"""
-1) pegar os dados de seis palavras latinas (uma de cada um dos seis casos latinos)
-
-2) organizá-las em seis tabelas no word para que suas respectivas declinações
-sejam preenchidas pelo usuário
-
-3) uma página abaixo, ordeganizá-las de novo em seis tabelas no word, porém dessa vez
-com os campos de resposta já preenchidos, para que o usuário possa consultá-los
-"""
+from components import get_random_words as words, make_word_doc as doc, wiktionary_bot as bot
 
 
+rand_words = words.get_random_words()
 
-def get_word_data(word) -> str:
-    ...
+words_data = bot.get_words_formated_data(rand_words)
+
+print(words_data)
+
+#doc.build_document(words_data)
+
+
+
+
 
 
     

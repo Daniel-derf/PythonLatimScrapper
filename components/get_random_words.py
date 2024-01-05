@@ -1,6 +1,6 @@
 import random as rand
 
-words_file = open("../words.txt")
+words_file = open("./words.txt")
 all_words = words_file.read().split('\n')
 
 def get_random_words():
@@ -11,6 +11,6 @@ def get_random_words():
     return words
 
 
-print(get_random_words())
+
 
 

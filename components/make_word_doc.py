@@ -1,13 +1,7 @@
 from docx import Document
 from datetime import date
-from web_scrapper import WiktionaryBot as bot
 
 doc = Document()
-doc.add_heading('Latin Exercises', 0)
-
-date = date.today().strftime('%d-%m-%Y')
-
-tables_data = bot.get_words_formated_data(['hominum', 'exercitus', 'rosa'])
 
 
 def make_to_fill_table(table_data):
@@ -34,17 +28,21 @@ def make_filled_table(table_data):
         row[2].text = plural
 
 
-for data in tables_data:
-    make_to_fill_table(data)
+def build_document(tables_data):
+    doc.add_heading('Latin Exercises', 0)
+    
+
+    for data in tables_data:
+        make_to_fill_table(data)
+        doc.add_paragraph()
+
     doc.add_paragraph()
 
-doc.add_paragraph()
+    for data in tables_data:
+        make_filled_table(data)
+        doc.add_paragraph()
 
-for data in tables_data:
-    make_filled_table(data)
-    doc.add_paragraph()
-
-
-doc.save(f'./word_docs/{date}.docx') 
+    today_date = date.today().strftime('%d-%m-%Y')
+    doc.save(f'./word_docs/{today_date}.docx') 
 
 
