@@ -27,12 +27,15 @@ class Wiktionary:
         page_data = self.browser.find_element(self.By.XPATH, "/html/body").text
         return page_data
     
-    def open(self, latin_word):
+    def open_word_declination(self, latin_word):
         if latin_word:
             self.browser.get(WIKTIONARY_LINK + latin_word)
+    
+    def open(self, link):
+        self.browser.get(link)
 
     def get_word_declination(self, word: str):
-        self.open(latin_word=word)
+        self.open_word_declination(latin_word=word)
         page_data = self.get_page_data()
         pattern = '([a-zA-Zīāōēū]+ [a-zA-Zīāōūē]+ [a-zA-Zīāōūē]+\n){7}'
         result = re.search(pattern, page_data)
