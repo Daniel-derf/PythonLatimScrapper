@@ -32,11 +32,11 @@ def get_random_word(declination):
     return random.choice(words)
 
 
-declinations = declination_links.keys()
-
-words = []
-
-for declination in declinations:
-    words.append(get_random_word(declination)) 
-
-print(words)
+def get_random_words():
+    declinations = declination_links.keys()
+    words = []
+    
+    for declination in declinations:
+        words.append(get_random_word(declination)) 
+        
+    return words

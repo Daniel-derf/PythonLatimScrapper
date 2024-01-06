@@ -46,7 +46,6 @@ class Wiktionary:
             page_html_data = self.browser.page_source
             pattern = 'href="/wiki/[a-z]+#Latin"'
             result = re.search(pattern, page_html_data)
-
             if result:
                 btn_selector = result.group()
                 button = browser.find_element(self.By.XPATH, f'//a[@{btn_selector}]')
