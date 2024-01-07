@@ -6,12 +6,3 @@ rand_words = words.get_random_words()
 words_data = bot.get_words_formated_data(rand_words)
 
 doc.build_document(words_data)
-
-
-
-
-
-
-    
-
-
