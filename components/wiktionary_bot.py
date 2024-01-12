@@ -56,7 +56,7 @@ class Wiktionary:
                 if result:
                     return result.group()
                 else:
-                    return 'ERRO'
+                    return print('Resultado não encontrado para palavra ', word)
             else:
                 return 'PALAVRA NÃO ENCONTRADA'
 
@@ -70,28 +70,40 @@ def get_words_formated_data(words_list):
 
     w_decs = wik_bot.get_all_words_declinations(words_list)
 
+    # [0, 1, 6, 2, 3, 5, 4]
+
     formated_w_decs: list = []
 
     for word_dec in w_decs:
-        lines = word_dec.split('\n')
-        lines = [line for line in lines if line]
-        formated_result = [line.split() for line in lines]
+        if word_dec:
+            lines = word_dec.split('\n')
+            lines = [line for line in lines if line]
+            formated_result = [line.split() for line in lines]
 
-        genitive_case: str
+            genitive_case: str
 
-        for line in formated_result:
-            for idx, word in enumerate(line):
-                if word == 'Genitive':
-                    genitive_case = line[idx + 1]
+            for line in formated_result:
+                for idx, word in enumerate(line):
+                    if word == 'Genitive':
+                        genitive_case = line[idx + 1]
 
-        for idx1, line in enumerate(formated_result):
-            for idx, word in enumerate(line):
-                if word == 'Case':
-                    formated_result[idx1][idx] = genitive_case
+            for idx1, line in enumerate(formated_result):
+                for idx, word in enumerate(line):
+                    if word == 'Case':
+                        formated_result[idx1][idx] = genitive_case
 
-        formated_w_decs.append(formated_result) 
-    
+            formated_w_decs.append(formated_result) 
+
+    ordered_positions = [0, 1, 6, 2, 3, 5, 4]
+
+    for line in formated_w_decs:
+        new_line = [1, 2, 3, 4, 5, 6, 7]
+        for i, index in enumerate(ordered_positions):
+            new_line[i] = line[index]
+        line[:] = new_line
+
     return formated_w_decs
+
 
 
 
