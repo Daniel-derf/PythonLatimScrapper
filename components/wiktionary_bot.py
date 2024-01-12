@@ -70,8 +70,6 @@ def get_words_formated_data(words_list):
 
     w_decs = wik_bot.get_all_words_declinations(words_list)
 
-    # [0, 1, 6, 2, 3, 5, 4]
-
     formated_w_decs: list = []
 
     for word_dec in w_decs:
@@ -106,6 +104,3 @@ def get_words_formated_data(words_list):
 
 
 
-
-
-# [a-zA-Z]{4,20} : 
