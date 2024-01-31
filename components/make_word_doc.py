@@ -30,7 +30,6 @@ def make_filled_table(table_data):
 
 def build_document(tables_data):
     doc.add_heading('Latin Exercises', 0)
-    
 
     for data in tables_data:
         make_to_fill_table(data)
