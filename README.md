@@ -1,8 +1,9 @@
-Sistema automático de exercícios de latim.
+Automatic Latin Exercise System.
 
-Para usá-lo:
-1) Crie um ambiente virtual (venv)
-2) Acesse o venv
-3) Instale as libs necessárias (requirements.txt)
-4) Crie uma pasta word_docs no diretório atual (se não existir)
-5) Rode o app.py
+To use it:
+
+1) Create a virtual environment (venv)
+2) Activate the venv
+3) Install the required libraries (requirements.txt)
+4) Create a folder called "word_docs" in the current directory (if it doesn't already exist)
+5) Run the app.py
